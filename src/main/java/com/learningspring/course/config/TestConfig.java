@@ -1,9 +1,6 @@
 package com.learningspring.course.config;
 
-import com.learningspring.course.entities.Category;
-import com.learningspring.course.entities.Order;
-import com.learningspring.course.entities.Product;
-import com.learningspring.course.entities.User;
+import com.learningspring.course.entities.*;
 import com.learningspring.course.entities.enuns.OrderStatus;
 import com.learningspring.course.repositories.CategoryRepository;
 import com.learningspring.course.repositories.OrderRepository;
@@ -67,6 +64,9 @@ public class TestConfig implements CommandLineRunner {
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 
+        Payment pay1 = new Payment(null,Instant.parse("2019-06-20T21:53:07Z"),o1);
+        o1.setPayment(pay1);
 
+        orderRepository.save(o1);
     }
 }
