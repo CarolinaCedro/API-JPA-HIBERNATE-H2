@@ -32,6 +32,7 @@ public class Product implements Serializable {
     }
 
     public Product(Long id, String name, String description, Double price, String imgUrl) {
+        super();
         this.id = id;
         this.name = name;
         this.description = description;
@@ -83,16 +84,12 @@ public class Product implements Serializable {
         return categories;
     }
 
-
     @JsonIgnore
     public Set<Order> getOrders() {
         Set<Order> set = new HashSet<>();
-
-        for (OrderItem x : items
-        ) {
+        for (OrderItem x : items) {
             set.add(x.getOrder());
         }
-
         return set;
     }
 

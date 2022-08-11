@@ -1,9 +1,12 @@
 package com.learningspring.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
+
 
 @Entity
 @Table(name = "tb_payment")
@@ -14,18 +17,20 @@ public class Payment implements Serializable {
     private Long id;
     private Instant moment;
 
+    @JsonIgnore
     @OneToOne
     @MapsId
     private Order order;
 
-    public Payment(){}
+    public Payment() {
+    }
 
     public Payment(Long id, Instant moment, Order order) {
+        super();
         this.id = id;
         this.moment = moment;
         this.order = order;
     }
-
 
     public Long getId() {
         return id;

@@ -10,8 +10,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
+public class OrderItemPK implements Serializable {
 
-public class OrderItemPk implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
@@ -24,15 +24,12 @@ public class OrderItemPk implements Serializable {
     public Order getOrder() {
         return order;
     }
-
     public void setOrder(Order order) {
         this.order = order;
     }
-
     public Product getProduct() {
         return product;
     }
-
     public void setProduct(Product product) {
         this.product = product;
     }
@@ -41,8 +38,8 @@ public class OrderItemPk implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderItemPk that = (OrderItemPk) o;
-        return Objects.equals(order, that.order) && Objects.equals(product, that.product);
+        OrderItemPK that = (OrderItemPK) o;
+        return order.equals(that.order) && product.equals(that.product);
     }
 
     @Override
